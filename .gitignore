@@ -1,0 +1,7 @@
+#Just to exclude files from github code sync
+*.suo
+*.user
+_ReSharper.*
+bin
+obj
+packages
