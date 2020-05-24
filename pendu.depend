@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1590017597 source:c:\users\colla\documents\data-anal\yorley\pendu\dico.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"dico.h"
+
+1590017602 c:\users\colla\documents\data-anal\yorley\pendu\dico.h
+
+1590331133 source:c:\users\colla\documents\data-anal\yorley\pendu\main.c
+	<stdio.h>
+	<ctype.h>
+	"fichiers.h"
+
+1590330061 c:\users\colla\documents\data-anal\yorley\pendu\fichiers.h
+

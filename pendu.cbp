@@ -31,6 +31,20 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename=".gitignore" />
+		<Unit filename="Fichiers.h" />
+		<Unit filename="dico.txt" />
+		<Unit filename="dicos/Difficulte1.txt" />
+		<Unit filename="dicos/Difficulte2.txt" />
+		<Unit filename="dicos/Difficulte3.txt" />
+		<Unit filename="dicos/Difficulte4.txt" />
+		<Unit filename="dicos/Difficulte5.txt" />
+		<Unit filename="fichiers.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="main.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
