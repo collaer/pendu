@@ -33,7 +33,10 @@
 		</Compiler>
 		<Unit filename=".gitignore" />
 		<Unit filename="Fichiers.h" />
-		<Unit filename="dico.txt" />
+		<Unit filename="dico.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="dico.h" />
 		<Unit filename="dicos/Difficulte1.txt" />
 		<Unit filename="dicos/Difficulte2.txt" />
 		<Unit filename="dicos/Difficulte3.txt" />

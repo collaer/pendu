@@ -9,18 +9,22 @@
 #define DEF_FICHIERS
 
 
-typedef struct Jouer Jouer;
-struct Jouer
+typedef struct Joueur Joueur;
+struct Joueur
 {
     char nom [100];
     char prenom [100];
+    // difficulty level between 1-5
+    int difficulty;
+    // invisible mode, 0: norma, 1: invisible
+    int invisible;
 };
-char Info_jouer(Jouer*);
+int joueurIsReady(Joueur*);
+void Info_jouer(Joueur*);
 char execute_menu();
-void Option_jeu(char*);
-char* Dif_dictionnaire();
-int piocherMot(char* );
-int nombreAleatoire(int);
-void Mode();
+void Option_jeu(Joueur*);
+char execute_menu_options(Joueur*,char*);
+int Dif_dictionnaire();
+int Mode();
 
 #endif // DEF_FICHIERS

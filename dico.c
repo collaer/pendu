@@ -13,14 +13,32 @@ pour le jeu du pendu
 #include "dico.h"
 
 
-int piocherMot(char *motPioche)
+int piocherMot(char *motPioche, int difficulte)
 {
     FILE* dico = NULL; // Le pointeur de fichier qui va
                        // contenir notre fichier
     int   nombreMots = 0, numMotChoisi = 0, i = 0;
     int   caractereLu = 0;
-    dico = fopen("dico.txt", "r"); // On ouvre le dictionnaire
-                                   // en lecture seule
+
+    //C'est l'unique modification apportee le nouveau parameter int difficulte et le switch pour choisir un dico.
+    switch(difficulte)
+    {
+    case 2:
+        dico = fopen("./dicos/Difficulte2.txt", "r");
+    break;
+    case 3:
+        dico = fopen("./dicos/Difficulte3.txt", "r");
+    break;
+    case 4:
+        dico = fopen("./dicos/Difficulte4.txt", "r");
+    break;
+    case 5:
+        dico = fopen("./dicos/Difficulte5.txt", "r");
+    break;
+    default:
+        dico = fopen("./dicos/Difficulte1.txt", "r");
+    }
+
 
     // On vérifie si on a réussi à ouvrir le dictionnaire
     if (dico == NULL) // Si on n'a PAS réussi à ouvrir le fichier

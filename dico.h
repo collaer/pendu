@@ -4,6 +4,6 @@ Contient les prototypes des fonctions de dico.c
 */
 #ifndef DEF_DICO
 #define DEF_DICO
-int piocherMot(char *motPioche);
+int piocherMot(char *motPioche, int difficulte);
 int nombreAleatoire(int nombreMax);
 #endif
