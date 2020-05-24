@@ -1,4 +1,4 @@
-##Add myConio to compiler settings
+## Add myConio to compiler settings
 
 Créer un répertoire (chez moi, il s’agit de c:\Users\Evrard\TestCB, mais l’emplacement et le nom peuvent être choisis librement) puis y copier les fichiers « myconio.h » et «  myconio.cpp » contenus dans le répertoire « myconio » fourni en téléchargement sur l’école virtuelle.
 
