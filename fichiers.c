@@ -344,7 +344,7 @@ void menu_jeu(Joueur* leJoueur, Partie* laPartie)
                 {
                     case 3:
                         //INVISIBLE
-                        gotoxy(45+i, 16); printf("?", laPartie->motSecret[i]); // On l'affiche comme les visible
+                        gotoxy(45+i, 16); printf("_", laPartie->motSecret[i]); // On l'affiche comme les invisible
                     break;
                     case 2:
                         //SEMI INVISIBLE
