@@ -14,9 +14,7 @@ struct Joueur
 {
     char nom [100];
     char prenom [100];
-    // difficulty level between 1-5
     int difficulty;
-    // invisible mode, 0: norma, 1: invisible
     int invisible;
 };
 int joueurIsReady(Joueur*);
@@ -26,5 +24,19 @@ void Option_jeu(Joueur*);
 char execute_menu_options(Joueur*,char*);
 int Dif_dictionnaire();
 int Mode();
+
+
+typedef struct Partie Partie;
+struct Partie
+{
+    char motSecret [100];
+    long tailleMot;
+    char mask [100];
+    int *lettreTrouvee;
+    long coupsRestants;
+};
+char lireCaractere();
+int rechercheLettre(char , char[] , int[] );
+int gagne(int[], long );
 
 #endif // DEF_FICHIERS

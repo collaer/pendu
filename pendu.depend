@@ -1,25 +1,35 @@
 # depslib dependency file v1.0
-1590344558 source:c:\users\colla\documents\data-anal\yorley\pendu\dico.c
+1590616887 source:c:\users\colla\documents\data-anal\yorley\pendu\dico.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
 	<string.h>
 	"dico.h"
 
-1590343633 c:\users\colla\documents\data-anal\yorley\pendu\dico.h
+1590616754 c:\users\colla\documents\data-anal\yorley\pendu\dico.h
 
-1590344310 source:c:\users\colla\documents\data-anal\yorley\pendu\main.c
+1590622579 source:c:\users\colla\documents\data-anal\yorley\pendu\main.c
 	<stdio.h>
 	<ctype.h>
 	"fichiers.h"
-	"dico.h"
 
-1590344213 c:\users\colla\documents\data-anal\yorley\pendu\fichiers.h
+1590622554 c:\users\colla\documents\data-anal\yorley\pendu\fichiers.h
 
-1590343557 source:c:\users\colla\documents\data-anal\yorley\pendu\fichiers.c
+1590623156 source:c:\users\colla\documents\data-anal\yorley\pendu\fichiers.c
 	<stdio.h>
 	<myconio.h>
 	<stdlib.h>
 	<string.h>
 	"fichiers.h"
+
+1590621701 c:\users\colla\documents\data-anal\yorley\pendu\pendu.h
+
+1590621978 source:c:\users\colla\documents\data-anal\yorley\pendu\pendu.c
+	<stdio.h>
+	<myconio.h>
+	<stdlib.h>
+	<string.h>
+	"pendu.h"
+	"fichiers.h"
+	"dico.h"
 

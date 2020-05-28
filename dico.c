@@ -12,15 +12,14 @@ pour le jeu du pendu
 
 #include "dico.h"
 
+/*= Fonctions ================================================*/
 
 int piocherMot(char *motPioche, int difficulte)
 {
-    FILE* dico = NULL; // Le pointeur de fichier qui va
-                       // contenir notre fichier
+    FILE* dico = NULL;
     int   nombreMots = 0, numMotChoisi = 0, i = 0;
     int   caractereLu = 0;
 
-    //C'est l'unique modification apportee le nouveau parameter int difficulte et le switch pour choisir un dico.
     switch(difficulte)
     {
     case 2:
@@ -40,16 +39,12 @@ int piocherMot(char *motPioche, int difficulte)
     }
 
 
-    // On vérifie si on a réussi à ouvrir le dictionnaire
-    if (dico == NULL) // Si on n'a PAS réussi à ouvrir le fichier
+    if (dico == NULL)
     {
         printf("\nImpossible de charger le dictionnaire de mots");
-        return 0; // On retourne 0 pour indiquer que la fonction a échoué
-        // A la lecture du return, la fonction s'arrête immédiatement.
+        return 0;
     }
 
-    // On compte le nombre de mots dans le fichier (il suffit de compter les
-    // entrées \n
     do
     {
         caractereLu = fgetc(dico);
@@ -58,10 +53,8 @@ int piocherMot(char *motPioche, int difficulte)
     }
     while(caractereLu != EOF);
 
-    numMotChoisi = nombreAleatoire(nombreMots); // On pioche un mot au hasard
+    numMotChoisi = nombreAleatoire(nombreMots);
 
-    // On recommence à lire le fichier depuis le début.
-    // On s'arrête lorsqu'on est arrivés au bon mot
     rewind(dico);
 
     while (numMotChoisi > 0)
@@ -71,15 +64,12 @@ int piocherMot(char *motPioche, int difficulte)
             numMotChoisi--;
     }
 
-    /* Le curseur du fichier est positionné au bon endroit.
-    On n'a plus qu'à faire un fgets qui lira la ligne */
     fgets(motPioche, 100, dico);
 
-    // On vire l'\n à la fin
     motPioche[strlen(motPioche) - 1] = '\0';
     fclose(dico);
 
-    return 1; // Tout s'est bien passé, on retourne 1
+    return 1;
 }
 
 int nombreAleatoire(int nombreMax)
