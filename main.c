@@ -43,10 +43,15 @@ int main()
 
 
             case '2' :
+                printf(" case 2 ");
                         if (joueurEstPret(&leJoueur) == 0)
                             strncpy(errorMessage, "Veuillez entrer votre Nom.", 100);
                         else
+                            {
+                            printf(" 3 ");
                             Jouer_partie(&leJoueur);
+
+                        }
                         break;
 
 

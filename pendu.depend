@@ -8,14 +8,14 @@
 
 1590616754 c:\users\colla\documents\data-anal\yorley\pendu\dico.h
 
-1590622579 source:c:\users\colla\documents\data-anal\yorley\pendu\main.c
+1590680366 source:c:\users\colla\documents\data-anal\yorley\pendu\main.c
 	<stdio.h>
 	<ctype.h>
 	"fichiers.h"
 
-1590622554 c:\users\colla\documents\data-anal\yorley\pendu\fichiers.h
+1590680164 c:\users\colla\documents\data-anal\yorley\pendu\fichiers.h
 
-1590623156 source:c:\users\colla\documents\data-anal\yorley\pendu\fichiers.c
+1590624335 source:c:\users\colla\documents\data-anal\yorley\pendu\fichiers.c
 	<stdio.h>
 	<myconio.h>
 	<stdlib.h>

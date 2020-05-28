@@ -35,6 +35,7 @@ struct Partie
     int *lettreTrouvee;
     long coupsRestants;
 };
+void nouvelle_partie(Joueur*);
 char lireCaractere();
 int rechercheLettre(char , char[] , int[] );
 int gagne(int[], long );

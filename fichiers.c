@@ -118,13 +118,18 @@ char execute_menu_options (Joueur* leJoueur, char *error_message)
     gotoxy(30,14); printf("* / \\                                             / \\ *");
     gotoxy(30,15); printf("*******************************************************");
 
-    if (leJoueur->invisible == 0)
+
+    if (leJoueur->invisible == 1)
     {
-        textcolor(GREEN);
-        gotoxy(45,11); printf("Mode invisible off");
+        gotoxy(45,11); printf("Mode visible actif");
+    }
+    else if (leJoueur->invisible == 2)
+    {
+        textcolor(LIGHTRED);
+        gotoxy(45,11); printf("Mode intermediaire actif");
         textcolor(LIGHTGREEN);
     }
-    else
+    else if (leJoueur->invisible == 3)
     {
         textcolor(RED);
         gotoxy(45,11); printf("Mode invisible actif");
@@ -195,27 +200,22 @@ void Option_jeu (Joueur* leJoueur)
 
 int Mode ()
 {
-    /*- Traitements ------------------------------------------*/
     clrscr();
-    char choix;
+    int choix;
 
-    gotoxy(41,14); printf("Mode invisible?");
-    gotoxy(41,16); printf("<1>        Oui");
-    gotoxy(41,17); printf("<2>        Non");
-    gotoxy(34,19); printf("Votre choix : ");
-    gotoxy(49,19); scanf(" %c", &choix);
+    gotoxy(41,14); printf("Mode ?");
+    gotoxy(41,16); printf("<1>        Visible");
+    gotoxy(41,17); printf("<2>        Intermediaire");
+    gotoxy(41,18); printf("<3>        Invisible");
+    gotoxy(41,19); printf("Votre choix : ");
+    gotoxy(55,19); scanf(" %d", &choix);
 
-    if (choix == '1')
-    {
-        return 1;
-    }
-    return 0;
+    return choix;
 }
 
 
 int Dif_dictionnaire()
 {
-    /*- Traitements ------------------------------------------*/
     clrscr();
     char choix;
     int difficulte;
@@ -267,7 +267,7 @@ void nouvelle_partie(Joueur* leJoueur)
     for (i = 0 ; i < laPartie.tailleMot ; i++)
         laPartie.lettreTrouvee[i] = 0;
 
-    menu_jeu(leJoueur, laPartie);
+    menu_jeu(leJoueur, &laPartie);
 }
 
 void menu_jeu(Joueur* leJoueur, Partie* laPartie)
@@ -278,6 +278,7 @@ void menu_jeu(Joueur* leJoueur, Partie* laPartie)
     long membresDuPendu = 0;
     // On continue à jouer tant qu'il reste au moins
     // un coup à jouer ou qu'on n'a pas gagné
+    printf("%d", laPartie->coupsRestants);
     while (laPartie->coupsRestants > 0 && !gagne(laPartie->lettreTrouvee, laPartie->tailleMot))
     {
 
@@ -294,8 +295,9 @@ void menu_jeu(Joueur* leJoueur, Partie* laPartie)
         gotoxy(30,14); printf("* / \\                                             / \\ *");
         gotoxy(30,15); printf("*******************************************************");
         gotoxy(30,16); printf("*                                                       *");
-        gotoxy(30,17); printf("*******************************************************");
-        gotoxy(34,20); printf("Devinez une lettre ? ");
+        gotoxy(30,17); printf("*                                                       *");
+        gotoxy(30,18); printf("*******************************************************");
+        gotoxy(34,21); printf("Devinez une lettre ? ");
 
         switch (membresDuPendu)
         {
@@ -338,15 +340,31 @@ void menu_jeu(Joueur* leJoueur, Partie* laPartie)
         {
             if (laPartie->lettreTrouvee[i]) // Si on a trouvé la lettre n°i
             {
-                gotoxy(45+i, 16); printf("%c", laPartie->motSecret[i]); // On l'affiche
+                switch(leJoueur->invisible)
+                {
+                    case 3:
+                        //INVISIBLE
+                        gotoxy(45+i, 16); printf("?", laPartie->motSecret[i]); // On l'affiche comme les visible
+                    break;
+                    case 2:
+                        //SEMI INVISIBLE
+                        gotoxy(45+i, 16); printf("?", laPartie->motSecret[i]); // On l'affiche sous forme de point dinterrogation
+                    break;
+                    case 1:
+                    default:
+                        //VISIBLE
+                        gotoxy(45+i, 16); printf("%c", laPartie->motSecret[i]); // On l'affiche
+                    break;
+                }
             }
             else
             {
-                gotoxy(45+i, 16); printf("_"); // Sinon, on affiche une étoile
-                             // pour les lettres non trouvées
+                gotoxy(45+i, 16); printf("_");
             }
         }
-        gotoxy(55,20); lettre = lireCaractere();
+        gotoxy(42+i, 17); printf("Mot %d lettres trouvees sur %d.", nombreLettresTrouvees(laPartie->lettreTrouvee, laPartie->tailleMot), laPartie->tailleMot);
+
+        gotoxy(55,21); lettre = lireCaractere();
 
         // Si ce n'était PAS la bonne lettre
         if (!rechercheLettre(lettre, laPartie->motSecret, laPartie->lettreTrouvee))
@@ -387,6 +405,17 @@ char lireCaractere()
     return caractere; // On retourne le premier caractère qu'on a lu
 }
 
+int nombreLettresTrouvees(int lettreTrouvee[], int tailleMot)
+{
+    int i = 0;
+    int nb = 0;
+    for (i = 0 ; i < tailleMot ; i++)
+    {
+        if (lettreTrouvee[i] == 1)
+            nb++;
+    }
+    return nb;
+}
 
 int gagne(int lettreTrouvee[], long tailleMot)
 {
