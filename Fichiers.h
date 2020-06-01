@@ -17,9 +17,10 @@ struct Joueur
     int difficulty;
     int invisible;
 };
-int joueurIsReady(Joueur*);
+
+int joueurEstPret(Joueur*);
 void Info_jouer(Joueur*);
-char execute_menu();
+char execute_menu(Joueur*, char[]);
 void Option_jeu(Joueur*);
 char execute_menu_options(Joueur*,char*);
 int Dif_dictionnaire();
@@ -31,13 +32,13 @@ struct Partie
 {
     char motSecret [100];
     long tailleMot;
-    char mask [100];
-    int *lettreTrouvee;
+    int* lettreTrouvee;
     long coupsRestants;
 };
+void menu_jeu(Joueur*, Partie*);
 void nouvelle_partie(Joueur*);
 char lireCaractere();
-int rechercheLettre(char , char[] , int[] );
-int gagne(int[], long );
+int rechercheLettre(char, char[], int*);
+int gagne(int*, long );
 
 #endif // DEF_FICHIERS

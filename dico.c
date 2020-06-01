@@ -1,6 +1,5 @@
 /*dico.c
 ------
-
 Ces fonctions piochent au hasard un mot dans un fichier dictionnaire
 pour le jeu du pendu
 */
@@ -14,28 +13,23 @@ pour le jeu du pendu
 
 /*= Fonctions ================================================*/
 
-int piocherMot(char *motPioche, int difficulte)
+int piocherMot(char* motPioche, int difficulte)
 {
     FILE* dico = NULL;
-    int   nombreMots = 0, numMotChoisi = 0, i = 0;
+    int   nombreMots = 0, numMotChoisi = 0;
     int   caractereLu = 0;
 
     switch(difficulte)
     {
-    case 2:
-        dico = fopen("./dicos/Difficulte2.txt", "r");
-    break;
-    case 3:
-        dico = fopen("./dicos/Difficulte3.txt", "r");
-    break;
-    case 4:
-        dico = fopen("./dicos/Difficulte4.txt", "r");
-    break;
-    case 5:
-        dico = fopen("./dicos/Difficulte5.txt", "r");
-    break;
-    default:
-        dico = fopen("./dicos/Difficulte1.txt", "r");
+        case 1: dico = fopen("./dicos/Difficulte1.txt", "r");
+                break;
+        case 3: dico = fopen("./dicos/Difficulte3.txt", "r");
+                break;
+        case 4: dico = fopen("./dicos/Difficulte4.txt", "r");
+                break;
+        case 5: dico = fopen("./dicos/Difficulte5.txt", "r");
+                break;
+        default: dico = fopen("./dicos/Difficulte2.txt", "r");
     }
 
 
