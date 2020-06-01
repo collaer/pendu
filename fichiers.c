@@ -266,6 +266,11 @@ void menu_jeu(Joueur* leJoueur, Partie* laPartie)
                      //l'utilisateur (retour du scanf)
     long i = 0;
     long membresDuPendu = 0;
+    char lettresGagnantes[40] = " ";
+    char lettresPerdantes[40] = " ";
+    char *tmpString;
+
+
 
     for (i = 0 ; i < laPartie->tailleMot ; i++)
         laPartie->lettreTrouvee[i];
@@ -336,7 +341,7 @@ void menu_jeu(Joueur* leJoueur, Partie* laPartie)
                     case 1:
                     default:
                         /*= VISIBLE------------------------------------------*/
-                        gotoxy(32,17); printf("%c ", lettre);
+                        gotoxy(32,17); printf("%s [%s ]", lettresGagnantes, lettresPerdantes);
                         if (laPartie->lettreTrouvee[i])
                         {
                             gotoxy(57+i,16); printf("%c", laPartie->motSecret[i]); // On l'affiche
@@ -358,6 +363,11 @@ void menu_jeu(Joueur* leJoueur, Partie* laPartie)
         {
             laPartie->coupsRestants--;
             membresDuPendu++;
+            strncat(lettresPerdantes, &lettre, 1);
+        }
+        else
+        {
+            strncat(lettresGagnantes, &lettre, 1);
         }
     }
 
@@ -381,6 +391,10 @@ char lireCaractere()
     char caractere = 0;
 
     caractere = getchar();
+
+    if (caractere == '\n')
+        caractere = getchar();
+
     caractere = toupper(caractere);
 
     while (getchar() != '\n')
